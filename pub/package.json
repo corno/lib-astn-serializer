@@ -1,0 +1,29 @@
+{
+  "author": "Corno",
+  "bin": {},
+  "dependencies": {
+    "api-astn-handlers": "^0.0.0",
+    "api-astn-escape-string": "^0.0.0",
+    "pareto-core-lib": "^0.4.0"
+  },
+  "files": [
+    "dist",
+    "data"
+  ],
+  "keywords": [],
+  "main": "./dist/index.js",
+  "bugs": {
+    "url": "https://github.com/corno/astn/issues"
+  },
+  "description": "",
+  "homepage": "https://github.com/corno/astn#readme",
+  "license": "ISC",
+  "name": "astn-serializer-lib",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/corno/astn-serializer-lib.git"
+  },
+  "types": "dist/index.d.ts",
+  "version": "0.15.0",
+  "content-fingerprint": "a94e89db6ca5aef2de52dde041b936b82b104eea"
+}
