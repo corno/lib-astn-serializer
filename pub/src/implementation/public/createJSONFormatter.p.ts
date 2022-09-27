@@ -1,27 +1,27 @@
 import * as pl from "pareto-core-lib"
 
+import * as api from "../../interface"
 
-import * as api from "../interface"
-import { EscapeString } from "astn-serialize-string-api"
+import * as escape from "api-astn-escape-string"
 
-import { createSerializedNonWrappedString, createSerializedQuotedString } from "./stringSerialization"
+import { createSerializedNonWrappedString, createSerializedQuotedString } from "./stringSerialization.p"
 
-export function createJSONFormatter<Annotation>(
+export function createJSONFormatter<PAnnotation>(
     $: {
         indentationString: string,
         newline: string,
     },
     $i: {
-        writer: api.IFormatInstructionWriter<Annotation>,
+        writer: api.IFormatInstructionWriter<PAnnotation>,
         onEnd: () => void,
     },
     $d: {
         join: (array: string[], spacer: string) => string
-        escapeString: EscapeString
+        escapeString: escape.FEscapeString
     }
-): api.IAnnotatedHandler<Annotation> {
+): api.IAnnotatedHandler<PAnnotation> {
     const config = $
-    function createIndentation(context: api.StackContext) {
+    function createIndentation(context: api.TStackContext) {
         let indentation = ``
         for (let x = 0; x !== context.dictionaryDepth + context.verboseGroupDepth; x += 1) {
             indentation += $.indentationString
@@ -30,18 +30,18 @@ export function createJSONFormatter<Annotation>(
     }
     return {
         objectBegin: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: ``,
                     token: `{`,
                     stringAfter: ``,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
         property: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: `${$.isFirst ? "" : ","}${config.newline}${createIndentation($.stackContext)}`,
                     token: createSerializedQuotedString(
                         $.propertyToken.token.value,
@@ -51,28 +51,29 @@ export function createJSONFormatter<Annotation>(
                     ),
                     stringAfter: `: `,
                 },
-                $.propertyToken.annotation
-            )
+                annotation: $.propertyToken.annotation
+            })
         },
         objectEnd: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: $.isEmpty ? ` ` : `${config.newline}${createIndentation($.stackContext)}`,
                     token: `}`,
                     stringAfter: ``,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
 
         arrayBegin: ($) => {
             $i.writer.token({
-                stringBefore: ``,
-                token: `[`,
-                stringAfter: ``,
-            },
-                $.token.annotation,
-            )
+                instruction: {
+                    stringBefore: ``,
+                    token: `[`,
+                    stringAfter: ``,
+                },
+                annotation: $.token.annotation,
+            })
         },
         element: ($) => {
             $i.writer.nonToken(
@@ -82,18 +83,18 @@ export function createJSONFormatter<Annotation>(
             )
         },
         arrayEnd: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: ` `,
                     token: `]`,
                     stringAfter: ``,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
         simpleStringValue: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: ``,
                     token: ((): string => {
 
@@ -138,12 +139,12 @@ export function createJSONFormatter<Annotation>(
                     })(),
                     stringAfter: ``,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
         multilineStringValue: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: ``,
                     token: createSerializedQuotedString(
                         $d.join($.token.token.lines, config.newline),
@@ -153,22 +154,22 @@ export function createJSONFormatter<Annotation>(
                     ),
                     stringAfter: ``,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
         taggedUnionBegin: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: ``,
                     token: `[`,
                     stringAfter: ``,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
         option: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: ` `,
                     token: createSerializedQuotedString(
                         $.token.token.value,
@@ -178,8 +179,8 @@ export function createJSONFormatter<Annotation>(
                     ),
                     stringAfter: `, `,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
         taggedUnionEnd: ($) => {
             $i.writer.nonToken(

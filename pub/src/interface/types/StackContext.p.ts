@@ -1,5 +1,5 @@
 
-export type StackContext = {
+export type TStackContext = {
     readonly "dictionaryDepth": number
     readonly "verboseGroupDepth": number
     readonly "listDepth": number

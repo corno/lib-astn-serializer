@@ -1,12 +1,16 @@
-import { EscapeMultilineString, EscapeString } from "astn-serialize-string-api"
+import * as pt from "pareto-core-types"
+
+import * as escape from "api-astn-escape-string"
+
+import * as api from "../../interface"
 
 export function createSerializedMultilineString(
     $: {
-        lines: string[],
+        lines: pt.Array<string>,
         indentation: string,
     },
     $d: {
-        escapeMultilineString: EscapeMultilineString
+        escapeMultilineString: escape.FEscapeMultilineString
     }
 ): string {
     //don't escape tabs, newlines!
@@ -14,39 +18,39 @@ export function createSerializedMultilineString(
 }
 
 export function createSerializedApostrophedString(
-    str: string,
+    $: string,
     $d: {
-        escapeString: EscapeString
+        escapeString: escape.FEscapeString
     }
 ): string {
     return `'${$d.escapeString({
-        str: str,
+        str: $,
         escapeTabsAndNewLines: true,
         wrapperToEscape: "'",
     })}'`
 }
 
 export function createSerializedQuotedString(
-    str: string,
+    $: string,
     $d: {
-        escapeString: EscapeString
+        escapeString: escape.FEscapeString
     }
 ): string {
     return `"${$d.escapeString({
-        str: str,
+        str: $,
         escapeTabsAndNewLines: true,
         wrapperToEscape: "\"",
     })}"`
 }
 
 export function createSerializedNonWrappedString(
-    str: string,
+    $: string,
     $d: {
-        escapeString: EscapeString
+        escapeString: escape.FEscapeString
     }
 ): string {
     return $d.escapeString({
-        str: str,
+        str: $,
         escapeTabsAndNewLines: false,
         wrapperToEscape: null,
     })

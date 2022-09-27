@@ -1,8 +1,8 @@
 import * as pl from "pareto-core-lib"
 
-import * as th from "astn-handlers-api"
+import * as th from "api-astn-handlers"
 
-import * as api from "../interface"
+import * as api from "../../interface"
 
 export function createAnnotater<InTokenAnnotation>(
     handler: api.IAnnotatedHandler<InTokenAnnotation>,
@@ -13,7 +13,7 @@ export function createAnnotater<InTokenAnnotation>(
     let listDepth = 0
     let shorthandGroupDepth = 0
     let taggedUnionDepth = 0
-    function createStackContext(): api.StackContext {
+    function createStackContext(): api.TStackContext {
         return {
             dictionaryDepth: dictionaryDepth,
             verboseGroupDepth: verboseGroupDepth,

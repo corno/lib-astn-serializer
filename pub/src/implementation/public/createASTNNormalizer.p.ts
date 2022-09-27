@@ -1,47 +1,37 @@
 import * as pl from "pareto-core-lib"
 
-import * as stringSerialization from "./stringSerialization"
 
-import * as h from "astn-handlers-api"
-import * as api from "../interface"
-import { EscapeMultilineString, EscapeString } from "astn-serialize-string-api"
+import * as h from "api-astn-handlers"
+import * as escape from "api-astn-escape-string"
 
-export function createASTNNormalizer<Annotation>(
-    $: {
-        indentationString: string
-        newline: string
-    },
-    $i: {
-        writer: api.IFormatInstructionWriter<Annotation>
-    },
-    $d: {
-        escapeString: EscapeString
-        escapeMultilineString: EscapeMultilineString
-    }
-): api.IAnnotatedHandler<Annotation> {
+import * as api from "../../interface"
 
-    function createIndentation(context: api.StackContext) {
-        const depth = context.dictionaryDepth + context.verboseGroupDepth + context.listDepth
-        let indentation = $.newline
+import * as stringSerialization from "./stringSerialization.p"
+
+export const createASTNNormalizer: api.FCreateASTNNormalizer = ($, $i, $d) => {
+    const config = $
+    function createIndentation($: api.TStackContext) {
+        const depth = $.dictionaryDepth + $.verboseGroupDepth + $.listDepth
+        let indentation = config.newline
         for (let x = 0; x !== depth; x += 1) {
-            indentation += $.indentationString
+            indentation += config.indentationString
         }
         return indentation
     }
     return {
         objectBegin: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: ``,
                     token: `${$.token.token.type[0] === "verbose group" ? "(" : "{"}`,
                     stringAfter: ``,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
         property: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: `${createIndentation($.stackContext)}`,
                     token: ((): string => {
                         switch ($.objectToken.token.type[0]) {
@@ -67,29 +57,29 @@ export function createASTNNormalizer<Annotation>(
                     })(),
                     stringAfter: `: `,
                 },
-                $.propertyToken.annotation,
-            )
+                annotation: $.propertyToken.annotation,
+            })
         },
         objectEnd: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: $.isEmpty ? ` ` : `${createIndentation($.stackContext)}`,
                     token: `${$.openToken.token.type[0] === "verbose group" ? ")" : "}"}`,
                     stringAfter: ``,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
 
         arrayBegin: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: ``,
                     token: `${$.token.token.type[0] === "shorthand group" ? "<" : "["}`,
                     stringAfter: ``,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
         element: ($) => {
             $i.writer.nonToken(
@@ -101,8 +91,8 @@ export function createASTNNormalizer<Annotation>(
             )
         },
         arrayEnd: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: $.openToken.token.type[0] === "shorthand group"
                         ? ` `
                         : $.isEmpty ? ` ` : `${createIndentation($.stackContext)}`,
@@ -111,13 +101,13 @@ export function createASTNNormalizer<Annotation>(
                         : `]`,
                     stringAfter: ``,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
 
         simpleStringValue: ($) => {
             function serializeSimpleString(
-                $: h.SimpleString,
+                $: h.TSimpleString,
             ): string {
                 switch ($.wrapping[0]) {
                     case "none": {
@@ -149,20 +139,20 @@ export function createASTNNormalizer<Annotation>(
                         return pl.au($.wrapping[0])
                 }
             }
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: ``,
                     token: serializeSimpleString(
                         $.token.token,
                     ),
                     stringAfter: ``,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
         multilineStringValue: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: ``,
                     token: stringSerialization.createSerializedMultilineString(
                         {
@@ -175,23 +165,23 @@ export function createASTNNormalizer<Annotation>(
                     ),
                     stringAfter: ``,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
 
         taggedUnionBegin: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: ``,
                     token: `|`,
                     stringAfter: ` `,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
         option: ($) => {
-            $i.writer.token(
-                {
+            $i.writer.token({
+                instruction: {
                     stringBefore: ``,
                     token: stringSerialization.createSerializedApostrophedString(
                         $.token.token.value,
@@ -201,8 +191,8 @@ export function createASTNNormalizer<Annotation>(
                     ),
                     stringAfter: ` `,
                 },
-                $.token.annotation,
-            )
+                annotation: $.token.annotation,
+            })
         },
         taggedUnionEnd: ($) => {
             $i.writer.nonToken(

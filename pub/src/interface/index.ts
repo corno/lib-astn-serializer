@@ -1,6 +1,6 @@
-export * from "./types/StackContext"
-export * from "./types/FormatInstruction"
-export * from "./interfaces/IFormatInstructionWriter"
-export * from "./interfaces/IAnnotatedHandler"
+export * from "./types/StackContext.p"
+export * from "./types/FormatInstruction.p"
+export * from "./interfaces/FormatInstructionWriter.p"
+export * from "./interfaces/AnnotatedHandler.p"
 
-export * from "./tbd"
+export * from "./functions/functions.p"

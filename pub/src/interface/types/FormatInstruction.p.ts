@@ -1,9 +1,9 @@
-export type TokenFormatInstruction = {
-    stringBefore: string
-    token: string
-    stringAfter: string
+export type TTokenFormatInstruction = {
+    readonly "stringBefore": string
+    readonly "token": string
+    readonly "stringAfter": string
 }
 
-export type NonTokenFormatInstruction = {
-    string: string
+export type TNonTokenFormatInstruction = {
+    readonly "string": string
 }
