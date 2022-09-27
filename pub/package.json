@@ -1,6 +1,5 @@
 {
   "author": "Corno",
-  "bin": {},
   "dependencies": {
     "api-astn-escape-string": "^0.3.0",
     "api-astn-handlers": "^0.3.0",
@@ -18,13 +17,13 @@
   "description": "",
   "homepage": "https://github.com/corno/astn#readme",
   "license": "ISC",
-  "name": "astn-serializer-lib",
+  "name": "lib-astn-serializer",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/corno/astn-serializer-lib.git"
+    "url": "git+https://github.com/corno/lib-astn-serializer.git"
   },
   "types": "dist/index.d.ts",
-  "version": "0.15.0",
+  "version": "0.1.0",
   "interface-fingerprint": "6edcc16df7b88960c952d122ce20a70168b18c05",
-  "content-fingerprint": "7aea03c38b558671616d55dfabc41ca2bf392d23"
+  "content-fingerprint": "8805b05a20037232d85cc1e78d1734f16b588dcc"
 }
