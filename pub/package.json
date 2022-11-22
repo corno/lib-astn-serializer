@@ -3,7 +3,7 @@
   "dependencies": {
     "api-astn-escape-string": "^0.3.0",
     "api-astn-handlers": "^0.3.0",
-    "pareto-core-lib": "^0.13.0"
+    "pareto-core": "^0.0.4"
   },
   "files": [
     "dist",
@@ -24,6 +24,6 @@
   },
   "types": "dist/index.d.ts",
   "version": "0.1.0",
-  "interface-fingerprint": "79d1bf25eecb4c73a461e28371403b1d93b974eb",
-  "content-fingerprint": "68854c30143d6d30dd772e1ba032160698f88c13"
+  "interface-fingerprint": "5047dd96bec3caf219867c9a6fc1792abffc3af4",
+  "content-fingerprint": "cd14bec31ff74e6bbb012c6ea332176d60c10d7d"
 }
