@@ -1,6 +1,6 @@
 import * as pl from "pareto-core-lib"
 
-import * as th from "api-astn-handlers"
+import * as th from "glo-astn-handlers"
 
 import * as api from "../../interface"
 

@@ -1,6 +1,6 @@
 
-export * from "./public/createASTNNormalizer.p"
-export * from "./public/createAnnotater.p"
-export * from "./public/createJSONFormatter.p"
+export * from "../main/implementations/createASTNNormalizer.p"
+export * from "../main/implementations/createAnnotater.p"
+export * from "../main/implementations/createJSONFormatter.p"
 
-export * from "./public/stringSerialization.p" //split this file
+export * from "../main/implementations/createNonWrappedStringSerializer.p" //split this file

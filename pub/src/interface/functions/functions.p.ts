@@ -25,23 +25,6 @@ export type FCreateASTNNormalizer = <PAnnotation>(
     }
 ) => IAnnotatedHandler<PAnnotation>
 
-export type FSerializeString = (
-    $: string,
-    $d: {
-        readonly "escapeString": escape.FEscapeString
-    }
-) => string
-
-export type FSerializeMultilineString = (
-    $: {
-        readonly "lines": pt.Array<string>,
-        readonly "indentation": string
-    },
-    $d: {
-        readonly "escapeMultilineString": escape.FEscapeMultilineString
-    }
-
-) => string
 
 export type FCreateJSONFormatter = <PAnnotation>(
     $: {

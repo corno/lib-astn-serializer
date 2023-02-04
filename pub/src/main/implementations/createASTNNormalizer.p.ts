@@ -6,7 +6,7 @@ import * as escape from "api-astn-escape-string"
 
 import * as api from "../../interface"
 
-import * as stringSerialization from "./stringSerialization.p"
+import * as stringSerialization from "./createNonWrappedStringSerializer.p"
 
 export const createASTNNormalizer: api.FCreateASTNNormalizer = ($, $i, $d) => {
     const config = $

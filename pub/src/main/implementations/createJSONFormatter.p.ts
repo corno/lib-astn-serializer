@@ -4,7 +4,7 @@ import * as api from "../../interface"
 
 import * as escape from "api-astn-escape-string"
 
-import { createSerializedNonWrappedString, createSerializedQuotedString } from "./stringSerialization.p"
+import { createSerializedNonWrappedString, createSerializedQuotedString } from "./createNonWrappedStringSerializer.p"
 
 export function createJSONFormatter<PAnnotation>(
     $: {
