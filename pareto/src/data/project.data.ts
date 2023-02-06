@@ -24,6 +24,7 @@ export const $: mproject.TProject = {
                 'definition': dummyHandlers
             }
         }),
+        'executables': d({}),
         'test': {
             'dependencies': d({
             }),
