@@ -6,7 +6,7 @@ import * as escape from "api-astn-escape-string"
 
 import { createSerializedNonWrappedString, createSerializedQuotedString } from "./createNonWrappedStringSerializer.p"
 
-export function createJSONFormatter<PAnnotation>(
+export function $$<PAnnotation>(
     $: {
         indentationString: string,
         newline: string,

@@ -2,7 +2,7 @@ import * as pt from "pareto-core-types"
 
 import * as api from "../api"
 
-export const $$: api.CcreateSerializedApostrophedString = (
+export const $$: api.CcreateApostrophedStringSerializer = (
     $d,
 ) => {
     return ($) => {

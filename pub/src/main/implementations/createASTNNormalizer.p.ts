@@ -8,7 +8,7 @@ import * as api from "../../interface"
 
 import * as stringSerialization from "./createNonWrappedStringSerializer.p"
 
-export const createASTNNormalizer: api.FCreateASTNNormalizer = ($, $i, $d) => {
+export const $$: api.FCreateASTNNormalizer = ($, $i, $d) => {
     const config = $
     function createIndentation($: api.TStackContext) {
         const depth = $.dictionaryDepth + $.verboseGroupDepth + $.listDepth

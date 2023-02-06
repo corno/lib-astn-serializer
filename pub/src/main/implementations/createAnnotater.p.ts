@@ -4,7 +4,7 @@ import * as th from "glo-astn-handlers"
 
 import * as api from "../../interface"
 
-export function createAnnotater<InTokenAnnotation>(
+export function $$<InTokenAnnotation>(
     handler: api.IAnnotatedHandler<InTokenAnnotation>,
 ): th.ITreeHandler<InTokenAnnotation> {
 

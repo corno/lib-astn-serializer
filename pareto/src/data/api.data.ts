@@ -47,8 +47,6 @@ export const $: mmoduleDefinition.TModuleDefinition = {
                 "serializeQuotedString": definitionReference("SerializeString"),
             })),
             "createJSONFormatter": algorithm(definitionReference("FormatJSON"), constructor(typeReference("SerializerConfigurationData"), {
-                "serializeApostrophedString": definitionReference("SerializeString"),
-                "serializeMultilineString": definitionReference("SerializeMultilineString"),
                 "serializeNonWrappedString": definitionReference("SerializeString"),
                 "serializeQuotedString": definitionReference("SerializeString"),
             })),
