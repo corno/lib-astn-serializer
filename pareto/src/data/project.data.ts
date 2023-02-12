@@ -7,7 +7,7 @@ const d = pr.wrapRawDictionary
 import { $ as api } from "./api.data"
 import { $ as dummyHandlers } from "./submodules/dummyHandlers/moduleDefinition.data"
 
-export const $: mproject.TProject = {
+export const $: mproject.T.Project = {
     'author': "Corno",
     'description': "serialize an ASTN data structure (to ASTN or JSON)",
     'license': "ISC",

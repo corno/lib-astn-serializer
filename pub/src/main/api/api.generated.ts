@@ -11,14 +11,14 @@ export type CcreateApostrophedStringSerializer = ($d: {
     readonly 'escapeString': mescape.FEscapeString
 }) => glo.FSerializeString
 
-export type CcreateASTNNormalizer = ($: glo.TSerializerConfigurationData, $d: {
+export type CcreateASTNNormalizer = ($: glo.T.SerializerConfigurationData, $d: {
     readonly 'serializeApostrophedString': glo.FSerializeString
     readonly 'serializeMultilineString': glo.FSerializeMultilineString
     readonly 'serializeNonWrappedString': glo.FSerializeString
     readonly 'serializeQuotedString': glo.FSerializeString
 }) => glo.FNormalizeASTN
 
-export type CcreateJSONFormatter = ($: glo.TSerializerConfigurationData, $d: {
+export type CcreateJSONFormatter = ($: glo.T.SerializerConfigurationData, $d: {
     readonly 'serializeNonWrappedString': glo.FSerializeString
     readonly 'serializeQuotedString': glo.FSerializeString
 }) => glo.FFormatJSON

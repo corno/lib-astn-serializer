@@ -7,24 +7,23 @@ import {
     reference,
     boolean,
     typeReference,
-    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method
+    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method, type
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands.p"
 
 import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
 
 const d = pr.wrapRawDictionary
 
-export const $: mglossary.TGlossary = {
+export const $: mglossary.T.Glossary<string> = {
     'imports': d({
         "common": "glo-pareto-common",
     }),
     'parameters': d({}),
-    'templates': d({}),
-    'types': types({
-        "SerializeMultilineStringData": group({
+    'types': d({
+        "SerializeMultilineStringData": type(group({
             "lines": member(array(string())),
             "indentation": member(string()),
-        }),
+        })),
     }),
     'interfaces': d({
     }),
@@ -35,7 +34,7 @@ export const $: mglossary.TGlossary = {
         // export type FCreateAnnotater = <PAnnotation> (
         //     $i: IAnnotatedHandler<PAnnotation>,
         // ) => th.ITreeHandler<PAnnotation>
-        
+
         // export type FCreateASTNNormalizer = <PAnnotation>(
         //     $: {
         //         readonly "indentationString": string
@@ -50,8 +49,8 @@ export const $: mglossary.TGlossary = {
         //         readonly "escapeMultilineString": escape.FEscapeMultilineString
         //     }
         // ) => IAnnotatedHandler<PAnnotation>
-        
-        
+
+
         // export type FCreateJSONFormatter = <PAnnotation>(
         //     $: {
         //         readonly "indentationString": string,
@@ -66,6 +65,6 @@ export const $: mglossary.TGlossary = {
         //         readonly "escapeString": escape.FEscapeString
         //     }
         // ) => IAnnotatedHandler<PAnnotation>
-        
+
     }),
 }

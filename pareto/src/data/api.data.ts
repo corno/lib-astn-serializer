@@ -19,7 +19,7 @@ import { $ as glossary } from "./glossary.data"
 
 const d = pr.wrapRawDictionary
 
-export const $: mmoduleDefinition.TModuleDefinition = {
+export const $: mmoduleDefinition.T.ModuleDefinition = {
     'glossary': glossary,
     'api': {
         'imports': d({
@@ -28,16 +28,16 @@ export const $: mmoduleDefinition.TModuleDefinition = {
         }),
         'algorithms': d({
             "createApostrophedStringSerializer": algorithm(definitionReference("SerializeString"), constructor(null, {
-                "escapeString": definitionReference("escape", "EscapeString")
+                "escapeString": definitionReference("escape", {}, "EscapeString")
             })),
             "createMultilineStringSerializer": algorithm(definitionReference("SerializeMultilineString"), constructor(null, {
-                "escapeMultilineString": definitionReference("escape", "EscapeMultilineString")
+                "escapeMultilineString": definitionReference("escape", {}, "EscapeMultilineString")
             })),
             "createNonWrappedStringSerializer": algorithm(definitionReference("SerializeString"), constructor(null, {
-                "escapeString": definitionReference("escape", "EscapeString")
+                "escapeString": definitionReference("escape", {}, "EscapeString")
             })),
             "createQuotedStringSerializer": algorithm(definitionReference("SerializeString"), constructor(null, {
-                "escapeString": definitionReference("escape", "EscapeString")
+                "escapeString": definitionReference("escape", {}, "EscapeString")
             })),
             "createAnnotater": algorithm(definitionReference("CreateAnnotater")),
             "createASTNNormalizer": algorithm(definitionReference("NormalizeASTN"), constructor(typeReference("SerializerConfigurationData"), {
