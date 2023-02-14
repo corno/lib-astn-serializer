@@ -9,7 +9,7 @@ export const $$: api.CcreateQuotedStringSerializer = (
         return `"${$d.escapeString({
             str: $,
             escapeTabsAndNewLines: true,
-            wrapperToEscape: ['set', "\""],
+            wrapperToEscape: [true, "\""],
         })}"`
     }
 }

@@ -2,18 +2,21 @@ import * as pl from 'pareto-core-lib'
 
 import * as th from "glo-astn-handlers"
 
-import * as api from "../../interface"
+import * as api from "../api"
 
-export function $$<InTokenAnnotation>(
-    handler: api.IAnnotatedHandler<InTokenAnnotation>,
-): th.ITreeHandler<InTokenAnnotation> {
+// export function $$<InTokenAnnotation>(
+//     handler: api.IAnnotatedHandler<InTokenAnnotation>,
+// ): th.ITreeHandler<InTokenAnnotation> {
+
+export const $$: api.CcreateAnnotater = ($) => {
+
 
     let dictionaryDepth = 0
     let verboseGroupDepth = 0
     let listDepth = 0
     let shorthandGroupDepth = 0
     let taggedUnionDepth = 0
-    function createStackContext(): api.TStackContext {
+    function createStackContext(): api.T.StackContext<InTokenAnnotation> {
         return {
             dictionaryDepth: dictionaryDepth,
             verboseGroupDepth: verboseGroupDepth,
@@ -27,7 +30,7 @@ export function $$<InTokenAnnotation>(
     ): th.IValueHandler<InTokenAnnotation> {
         return {
             object: ($) => {
-                switch ($.token.token.type[0]) {
+                switch ($.token.type[0]) {
                     case "dictionary": {
                         dictionaryDepth += 1
                         break
@@ -37,7 +40,7 @@ export function $$<InTokenAnnotation>(
                         break
                     }
                     default:
-                        pl.au($.token.token.type[0])
+                        pl.au($.token.type[0])
                 }
                 handler.objectBegin({
                     token: $.token,
@@ -60,7 +63,7 @@ export function $$<InTokenAnnotation>(
                         return createDecoratedValue()
                     },
                     onEnd: ($$) => {
-                        switch ($.token.token.type[0]) {
+                        switch ($.token.type[0]) {
                             case "dictionary": {
                                 dictionaryDepth -= 1
                                 break
@@ -70,7 +73,7 @@ export function $$<InTokenAnnotation>(
                                 break
                             }
                             default:
-                                pl.au($.token.token.type[0])
+                                pl.au($.token.type[0])
                         }
                         handler.objectEnd({
                             openToken: $.token,
@@ -82,7 +85,7 @@ export function $$<InTokenAnnotation>(
                 }
             },
             array: ($) => {
-                switch ($.token.token.type[0]) {
+                switch ($.token.type[0]) {
                     case "list": {
                         listDepth += 1
                         break
@@ -92,7 +95,7 @@ export function $$<InTokenAnnotation>(
                         break
                     }
                     default:
-                        pl.au($.token.token.type[0])
+                        pl.au($.token.type[0])
                 }handler.arrayBegin({
                     token: $.token,
                     stackContext: createStackContext(),
@@ -110,7 +113,7 @@ export function $$<InTokenAnnotation>(
                         return createDecoratedValue()
                     },
                     onEnd: ($$) => {
-                        switch ($.token.token.type[0]) {
+                        switch ($.token.type[0]) {
                             case "list": {
                                 listDepth -= 1
                                 break
@@ -120,7 +123,7 @@ export function $$<InTokenAnnotation>(
                                 break
                             }
                             default:
-                                pl.au($.token.token.type[0])
+                                pl.au($.token.type[0])
                         }
                         handler.arrayEnd({
                             openToken: $.token,
@@ -150,17 +153,17 @@ export function $$<InTokenAnnotation>(
                     stackContext: createStackContext(),
                 })
                 return {
-                    option: ($$) => {
+                    option: ($) => {
                         handler.option({
-                            token: $$.token,
+                            token: $.token,
                             stackContext: createStackContext(),
                         })
                         return createDecoratedRequiredValue()
                     },
-                    missingOption: () => { 
+                    missingOption: () => {
                         return createDecoratedRequiredValue()
                     },
-                    end: ($$) => {
+                    onEnd: () => {
                         taggedUnionDepth -= 1
                         handler.taggedUnionEnd({
                             stackContext: createStackContext(),

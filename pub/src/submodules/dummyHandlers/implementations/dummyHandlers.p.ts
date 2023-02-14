@@ -1,4 +1,4 @@
-import * as grammar from "api-astn-handlers"
+import * as grammar from "glo-astn-handlers"
 
 export function createDummyRequiredValueHandler<PAnnotation>(
 ): grammar.IRequiredValueHandler<PAnnotation> {
@@ -24,7 +24,7 @@ export function createDummyTaggedUnionHandler<PAnnotation>(
     return {
         option: () => createDummyRequiredValueHandler(),
         missingOption: () => createDummyRequiredValueHandler(),
-        end: () => { },
+        onEnd: () => { },
     }
 }
 

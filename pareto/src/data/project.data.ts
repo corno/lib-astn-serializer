@@ -14,6 +14,7 @@ export const $: mproject.T.Project = {
 
     'pubdependencies': d({
         "res-astn-escape-string": {},
+        "glo-astn-handlers": {},
     }),
     'type': ['library', {
         'main': {

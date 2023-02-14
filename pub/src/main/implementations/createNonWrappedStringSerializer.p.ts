@@ -9,7 +9,7 @@ export const $$: api.CcreateNonWrappedStringSerializer = (
         return $d.escapeString({
             str: $,
             escapeTabsAndNewLines: false,
-            wrapperToEscape: ['not set', {}],
+            wrapperToEscape: [false],
         })
     }
 }

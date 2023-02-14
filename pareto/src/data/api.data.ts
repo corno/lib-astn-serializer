@@ -25,6 +25,7 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
         'imports': d({
             "common": "glo-pareto-common",
             "escape": "res-astn-escape-string",
+            "tostring": "res-pareto-tostring",
         }),
         'algorithms': d({
             "createApostrophedStringSerializer": algorithm(definitionReference("SerializeString"), constructor(null, {
@@ -47,8 +48,10 @@ export const $: mmoduleDefinition.T.ModuleDefinition = {
                 "serializeQuotedString": definitionReference("SerializeString"),
             })),
             "createJSONFormatter": algorithm(definitionReference("FormatJSON"), constructor(typeReference("SerializerConfigurationData"), {
+                "escapeString": definitionReference("escape", {}, "EscapeString"),
                 "serializeNonWrappedString": definitionReference("SerializeString"),
                 "serializeQuotedString": definitionReference("SerializeString"),
+                "join": definitionReference("tostring", {}, "JoinStringArray")
             })),
             // export type FCreateAnnotater = <PAnnotation> (
             //     $i: IAnnotatedHandler<PAnnotation>,

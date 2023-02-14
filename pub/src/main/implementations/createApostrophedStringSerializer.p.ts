@@ -9,7 +9,7 @@ export const $$: api.CcreateApostrophedStringSerializer = (
         return `'${$d.escapeString({
             str: $,
             escapeTabsAndNewLines: true,
-            wrapperToEscape: ['set', "'"],
+            wrapperToEscape: [true, "'"],
         })}'`
 
     }

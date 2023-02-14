@@ -19,6 +19,7 @@ export type CcreateASTNNormalizer = ($: glo.T.SerializerConfigurationData, $d: {
 }) => glo.FNormalizeASTN
 
 export type CcreateJSONFormatter = ($: glo.T.SerializerConfigurationData, $d: {
+    readonly 'escapeString': mescape.FEscapeString
     readonly 'serializeNonWrappedString': glo.FSerializeString
     readonly 'serializeQuotedString': glo.FSerializeString
 }) => glo.FFormatJSON
