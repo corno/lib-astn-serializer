@@ -4,6 +4,7 @@ import * as glo from "./glossary"
 
 import * as mcommon from "glo-pareto-common"
 import * as mescape from "res-astn-escape-string"
+import * as mtostring from "res-pareto-tostring"
 
 export type CcreateAnnotater = glo.FCreateAnnotater
 
@@ -20,6 +21,7 @@ export type CcreateASTNNormalizer = ($: glo.T.SerializerConfigurationData, $d: {
 
 export type CcreateJSONFormatter = ($: glo.T.SerializerConfigurationData, $d: {
     readonly 'escapeString': mescape.FEscapeString
+    readonly 'join': mtostring.FJoinStringArray
     readonly 'serializeNonWrappedString': glo.FSerializeString
     readonly 'serializeQuotedString': glo.FSerializeString
 }) => glo.FFormatJSON
