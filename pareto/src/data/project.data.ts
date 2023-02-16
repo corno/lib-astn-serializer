@@ -12,9 +12,11 @@ export const $: mproject.T.Project = {
     'description': "serialize an ASTN data structure (to ASTN or JSON)",
     'license': "ISC",
 
-    'pubdependencies': d({
-        "res-astn-escape-string": {},
+    'dependencies': d({
         "glo-astn-handlers": {},
+        "lib-astn-dummyhandlers": {},
+        "res-astn-escape-string": {},
+        "tostring": {}
     }),
     'type': ['library', {
         'main': {
@@ -29,6 +31,13 @@ export const $: mproject.T.Project = {
         'test': {
             'dependencies': d({
             }),
+            'glossary': {
+                'functions': d({}),
+                'imports': d({}),
+                'parameters': d({}),
+                'types': d({}),
+                'interfaces': d({}),
+            },
         }
     }],
 }

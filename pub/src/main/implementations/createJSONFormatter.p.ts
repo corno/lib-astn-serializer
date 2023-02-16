@@ -84,34 +84,23 @@ export const $$: api.CcreateJSONFormatter = ($c, $d) => {
                                     // if ($.token.data.value === "true" || $.token.data.value === "false" || $.token.data.value === "null") {
                                     //     return $.token.data.value
                                     // }
-                                    // //eslint-disable-next-line
                                     // const nr = new Number($.token.data.value).valueOf()
                                     // if (isNaN(nr)) {
                                     //     return createSerializedQuotedString($.token.data.value)
                                     // }
-                                    return createSerializedNonWrappedString(
+                                    return $d.serializeNonWrappedString(
                                         $.token.token.value,
-                                        {
-                                            escapeString: $d.escapeString
-                                        }
-
                                     )
                                 }
                                 case "quote": {
-                                    return createSerializedQuotedString(
+                                    return $d.serializeQuotedString(
                                         $.token.token.value,
-                                        {
-                                            escapeString: $d.escapeString
-                                        }
                                     )
                                 }
                                 case "apostrophe": {
                                     //IS THIS CORRECT?
-                                    return createSerializedQuotedString(
+                                    return $d.serializeQuotedString(
                                         $.token.token.value,
-                                        {
-                                            escapeString: $d.escapeString
-                                        }
                                     )
                                 }
                                 default:
