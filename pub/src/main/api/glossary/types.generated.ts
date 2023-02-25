@@ -1,7 +1,7 @@
 import * as pt from 'pareto-core-types'
 
-import * as mcommon from "glo-pareto-common"
-import * as mh from "glo-astn-handlers"
+import * as gcommon from "glo-pareto-common"
+import * as gh from "glo-astn-handlers"
 
 export namespace T {
     

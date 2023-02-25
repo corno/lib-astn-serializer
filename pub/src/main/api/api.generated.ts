@@ -1,42 +1,42 @@
 import * as pt from 'pareto-core-types'
 
-import * as glo from "./glossary"
+import * as gglo from "./glossary"
 
-import * as mcommon from "glo-pareto-common"
-import * as mescape from "res-astn-escape-string"
-import * as mtostring from "res-pareto-tostring"
+import * as gcommon from "glo-pareto-common"
+import * as gescape from "res-astn-escape-string"
+import * as gtostring from "res-pareto-tostring"
 
-export type CcreateAnnotater = glo.FCreateAnnotater
+export type CcreateAnnotater = gglo.FCreateAnnotater
 
 export type CcreateApostrophedStringSerializer = ($d: {
-    readonly 'escapeString': mescape.FEscapeString
-}) => glo.FSerializeString
+    readonly 'escapeString': gescape.FEscapeString
+}) => gglo.FSerializeString
 
-export type CcreateASTNNormalizer = ($: glo.T.SerializerConfigurationData, $d: {
-    readonly 'serializeApostrophedString': glo.FSerializeString
-    readonly 'serializeMultilineString': glo.FSerializeMultilineString
-    readonly 'serializeNonWrappedString': glo.FSerializeString
-    readonly 'serializeQuotedString': glo.FSerializeString
-}) => glo.FNormalizeASTN
+export type CcreateASTNNormalizer = ($: gglo.T.SerializerConfigurationData, $d: {
+    readonly 'serializeApostrophedString': gglo.FSerializeString
+    readonly 'serializeMultilineString': gglo.FSerializeMultilineString
+    readonly 'serializeNonWrappedString': gglo.FSerializeString
+    readonly 'serializeQuotedString': gglo.FSerializeString
+}) => gglo.FNormalizeASTN
 
-export type CcreateJSONFormatter = ($: glo.T.SerializerConfigurationData, $d: {
-    readonly 'escapeString': mescape.FEscapeString
-    readonly 'join': mtostring.FJoinStringArray
-    readonly 'serializeNonWrappedString': glo.FSerializeString
-    readonly 'serializeQuotedString': glo.FSerializeString
-}) => glo.FFormatJSON
+export type CcreateJSONFormatter = ($: gglo.T.SerializerConfigurationData, $d: {
+    readonly 'escapeString': gescape.FEscapeString
+    readonly 'join': gtostring.FJoinStringArray
+    readonly 'serializeNonWrappedString': gglo.FSerializeString
+    readonly 'serializeQuotedString': gglo.FSerializeString
+}) => gglo.FFormatJSON
 
 export type CcreateMultilineStringSerializer = ($d: {
-    readonly 'escapeMultilineString': mescape.FEscapeMultilineString
-}) => glo.FSerializeMultilineString
+    readonly 'escapeMultilineString': gescape.FEscapeMultilineString
+}) => gglo.FSerializeMultilineString
 
 export type CcreateNonWrappedStringSerializer = ($d: {
-    readonly 'escapeString': mescape.FEscapeString
-}) => glo.FSerializeString
+    readonly 'escapeString': gescape.FEscapeString
+}) => gglo.FSerializeString
 
 export type CcreateQuotedStringSerializer = ($d: {
-    readonly 'escapeString': mescape.FEscapeString
-}) => glo.FSerializeString
+    readonly 'escapeString': gescape.FEscapeString
+}) => gglo.FSerializeString
 
 export type API = {
     createAnnotater: CcreateAnnotater

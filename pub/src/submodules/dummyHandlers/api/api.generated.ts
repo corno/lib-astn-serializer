@@ -1,8 +1,8 @@
 import * as pt from 'pareto-core-types'
 
-import * as glo from "./glossary"
+import * as gglo from "./glossary"
 
-import * as mcommon from "glo-pareto-common"
-import * as mescape from "res-astn-escape-string"
+import * as gcommon from "glo-pareto-common"
+import * as gescape from "res-astn-escape-string"
 
 export type API = {}
