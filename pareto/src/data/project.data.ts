@@ -10,7 +10,7 @@ import { $ as dummyHandlers } from "./submodules/dummyHandlers/moduleDefinition.
 export const $: mproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
     'description': "serialize an ASTN data structure (to ASTN or JSON)",
-    'license': "ISC",
+    'license': "TBD",
 
     'dependencies': d({
         "glo-astn-handlers": {},
@@ -21,10 +21,12 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
     'type': ['library', {
         'main': {
             'definition': api,
+            'implementation': ['manual', {}],
         },
         'submodules': d({
             "dummyHandlers": {
-                'definition': dummyHandlers
+                'definition': dummyHandlers,
+                'implementation': ['manual', {}],
             }
         }),
         'executables': d({}),
