@@ -1,4 +1,4 @@
-import { API } from "./api"
+import { API } from "./definition/api.generated"
 import { $$ as icreateAnnotater } from "./implementations/createAnnotater.p"
 import { $$ as icreateApostrophedStringSerializer } from "./implementations/createApostrophedStringSerializer.p"
 import { $$ as icreateASTNNormalizer } from "./implementations/createASTNNormalizer.p"
