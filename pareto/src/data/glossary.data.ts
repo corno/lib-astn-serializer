@@ -7,7 +7,7 @@ import {
     reference,
     boolean,
     typeReference,
-    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, method, type, number, glossaryParameter
+    dictionary, group, member, taggedUnion, types, func, data, interfaceReference, inf, interfaceMethod, type, number, glossaryParameter, choice, stream,
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as mglossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -48,22 +48,25 @@ export const $: mglossary.T.Glossary<string> = {
             "string": member(string()),
         })),
     }),
+    'builders': d({
+    }),
     'interfaces': d({
-        "AnnotatedHandler": ['group', {
-            'members': d({
-                "objectBegin": method(null),
-                "property": method(null),
-                "objectEnd": method(null),
-                "arrayBegin": method(null),
-                "element": method(null),
-                "arrayEnd": method(null),
-                "simpleStringValue": method(null),
-                "multilineStringValue": method(null),
-                "taggedUnionBegin": method(null),
-                "option": method(null),
-                "taggedUnionEnd": method(null),
-            })
-        }],
+        "AnnotatedHandler": stream(
+            choice({
+                "objectBegin": interfaceMethod(null),
+                "property": interfaceMethod(null),
+                "objectEnd": interfaceMethod(null),
+                "arrayBegin": interfaceMethod(null),
+                "element": interfaceMethod(null),
+                "arrayEnd": interfaceMethod(null),
+                "simpleStringValue": interfaceMethod(null),
+                "multilineStringValue": interfaceMethod(null),
+                "taggedUnionBegin": interfaceMethod(null),
+                "option": interfaceMethod(null),
+                "taggedUnionEnd": interfaceMethod(null),
+            }),
+            interfaceMethod(null),
+        ),
         // export type IAnnotatedHandler<PAnnotation> = {
         //     readonly "objectBegin": ($: {
         //         readonly "token": h.T.OpenObjectToken<PAnnotation>
@@ -117,11 +120,11 @@ export const $: mglossary.T.Glossary<string> = {
         //     }) => void
         //     readonly "end": () => void
         // }
-        "FormatInstructionWriter": ['group', {
-            'members': d({
-                "token": method(typeReference("TokenData")),
-            })
-        }]
+        // "FormatInstructionWriter": ['group', {
+        //     'members': d({
+        //         "token": interfaceMethod(typeReference("TokenData")),
+        //     })
+        // }]
         // export type IFormatInstructionWriter<PAnnotation> = {
         //     readonly "token": ($: {
         //         readonly "instruction": TTokenFormatInstruction,

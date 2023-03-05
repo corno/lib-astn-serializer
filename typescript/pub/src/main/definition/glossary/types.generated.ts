@@ -1,64 +1,64 @@
 import * as pt from 'pareto-core-types'
 
-import * as gcommon from "glo-pareto-common"
-import * as gh from "glo-astn-handlers"
+import * as g_common from "glo-pareto-common"
+import * as g_h from "glo-astn-handlers"
 
 export namespace T {
     
-    export type Annotation<GPAnnotation> = GPAnnotation
+    export type Annotation<GAnnotation> = GAnnotation
     
     export namespace NonTokenFormatInstruction {
         
-        export type _lstring<GPAnnotation> = string
+        export type _lstring<GAnnotation> = string
     }
     
-    export type NonTokenFormatInstruction<GPAnnotation> = {
+    export type NonTokenFormatInstruction<GAnnotation> = {
         readonly 'string': string
     }
     
     export namespace SerializeMultilineStringData {
         
-        export type indentation<GPAnnotation> = string
+        export type indentation<GAnnotation> = string
         
         export namespace lines {
             
-            export type A<GPAnnotation> = string
+            export type A<GAnnotation> = string
         }
         
-        export type lines<GPAnnotation> = pt.Array<string>
+        export type lines<GAnnotation> = pt.Array<string>
     }
     
-    export type SerializeMultilineStringData<GPAnnotation> = {
+    export type SerializeMultilineStringData<GAnnotation> = {
         readonly 'indentation': string
         readonly 'lines': pt.Array<string>
     }
     
     export namespace SerializerConfigurationData {
         
-        export type indentationString<GPAnnotation> = string
+        export type indentationString<GAnnotation> = string
         
-        export type newline<GPAnnotation> = string
+        export type newline<GAnnotation> = string
     }
     
-    export type SerializerConfigurationData<GPAnnotation> = {
+    export type SerializerConfigurationData<GAnnotation> = {
         readonly 'indentationString': string
         readonly 'newline': string
     }
     
     export namespace StackContext {
         
-        export type dictionaryDepth<GPAnnotation> = number
+        export type dictionaryDepth<GAnnotation> = number
         
-        export type listDepth<GPAnnotation> = number
+        export type listDepth<GAnnotation> = number
         
-        export type shorthandGroupDepth<GPAnnotation> = number
+        export type shorthandGroupDepth<GAnnotation> = number
         
-        export type taggedUnionDepth<GPAnnotation> = number
+        export type taggedUnionDepth<GAnnotation> = number
         
-        export type verboseGroupDepth<GPAnnotation> = number
+        export type verboseGroupDepth<GAnnotation> = number
     }
     
-    export type StackContext<GPAnnotation> = {
+    export type StackContext<GAnnotation> = {
         readonly 'dictionaryDepth': number
         readonly 'listDepth': number
         readonly 'shorthandGroupDepth': number
@@ -68,26 +68,26 @@ export namespace T {
     
     export namespace TokenData {
         
-        export type annotation<GPAnnotation> = GPAnnotation
+        export type annotation<GAnnotation> = GAnnotation
         
-        export type instruction<GPAnnotation> = T.TokenFormatInstruction<GPAnnotation>
+        export type instruction<GAnnotation> = T.TokenFormatInstruction<GAnnotation>
     }
     
-    export type TokenData<GPAnnotation> = {
-        readonly 'annotation': GPAnnotation
-        readonly 'instruction': T.TokenFormatInstruction<GPAnnotation>
+    export type TokenData<GAnnotation> = {
+        readonly 'annotation': GAnnotation
+        readonly 'instruction': T.TokenFormatInstruction<GAnnotation>
     }
     
     export namespace TokenFormatInstruction {
         
-        export type stringAfter<GPAnnotation> = string
+        export type stringAfter<GAnnotation> = string
         
-        export type stringBefore<GPAnnotation> = string
+        export type stringBefore<GAnnotation> = string
         
-        export type token<GPAnnotation> = string
+        export type token<GAnnotation> = string
     }
     
-    export type TokenFormatInstruction<GPAnnotation> = {
+    export type TokenFormatInstruction<GAnnotation> = {
         readonly 'stringAfter': string
         readonly 'stringBefore': string
         readonly 'token': string
