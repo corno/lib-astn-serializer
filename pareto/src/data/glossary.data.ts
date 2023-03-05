@@ -123,7 +123,7 @@ export const $: mglossary.T.Glossary<string> = {
         // "FormatInstructionWriter": ['group', {
         //     'members': d({
         //         "token": interfaceMethod(typeReference("TokenData")),
-        //     })
+        //     }),
         // }]
         // export type IFormatInstructionWriter<PAnnotation> = {
         //     readonly "token": ($: {

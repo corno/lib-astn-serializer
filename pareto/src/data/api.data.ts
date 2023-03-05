@@ -8,16 +8,16 @@ const d = pd.d
 export const $: gapi.T.API<pd.SourceLocation> = {
     'algorithms': d({
         "createApostrophedStringSerializer": algorithm(functionReference("this", {}, "SerializeString"), constructor(null, {
-            "escapeString": functionReference("escape", {}, "EscapeString")
+            "escapeString": functionReference("escape", {}, "EscapeString"),
         })),
         "createMultilineStringSerializer": algorithm(functionReference("this", {}, "SerializeMultilineString"), constructor(null, {
-            "escapeMultilineString": functionReference("escape", {}, "EscapeMultilineString")
+            "escapeMultilineString": functionReference("escape", {}, "EscapeMultilineString"),
         })),
         "createNonWrappedStringSerializer": algorithm(functionReference("this", {}, "SerializeString"), constructor(null, {
-            "escapeString": functionReference("escape", {}, "EscapeString")
+            "escapeString": functionReference("escape", {}, "EscapeString"),
         })),
         "createQuotedStringSerializer": algorithm(functionReference("this", {}, "SerializeString"), constructor(null, {
-            "escapeString": functionReference("escape", {}, "EscapeString")
+            "escapeString": functionReference("escape", {}, "EscapeString"),
         })),
         "createAnnotater": algorithm(functionReference("this", {}, "CreateAnnotater")),
         "createASTNNormalizer": algorithm(functionReference("this", {}, "NormalizeASTN"), constructor(typeReference("this", {}, "SerializerConfigurationData"), {
@@ -30,7 +30,7 @@ export const $: gapi.T.API<pd.SourceLocation> = {
             "escapeString": functionReference("escape", {}, "EscapeString"),
             "serializeNonWrappedString": functionReference("this", {}, "SerializeString"),
             "serializeQuotedString": functionReference("this", {}, "SerializeString"),
-            "join": functionReference("tostring", {}, "JoinStringArray")
+            "join": functionReference("tostring", {}, "JoinStringArray"),
         })),
         // export type FCreateAnnotater = <PAnnotation> (
         //     $i: IAnnotatedHandler<PAnnotation>,
@@ -67,5 +67,5 @@ export const $: gapi.T.API<pd.SourceLocation> = {
         //     }
         // ) => IAnnotatedHandler<PAnnotation>
 
-    })
+    }),
 }
