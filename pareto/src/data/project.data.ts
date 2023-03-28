@@ -7,7 +7,7 @@ const d = pd.d
 import { $ as api } from "./api.data"
 import { $ as glossary } from "./glossary.data"
 
-import { external, sibling, this_ } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
+import { external, this_ } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
 export const $: mproject.T.Project<pd.SourceLocation> = {
     'author': "Corno",
@@ -43,18 +43,41 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
             'implementation': ['typescript', null],
         },
         'submodules': d({}),
+        'bindings': [false],
         'executables': d({}),
         'test': {
             'dependencies': d({
             }),
-            'glossary': {
-                'parameters': d({}),
-                'types': d({}),
-                'builders': d({}),
-                'interfaces': d({}),
-                'functions': d({}),
+            'definition': {
+                'glossary': {
+                    'root': {
+                        'parameters': d({}),
+                        'imports': d({}),
+                        'root': {
+                            'namespaces': d({}),
+                            'types': d({}),
+                        },
+                        'asynchronous': {
+                            'interfaces': d({}),
+                            'constructors': d({}),
+                            'functions': d({}),
+                        },
+                        'synchronous': {
+                            'interfaces': d({}),
+                            'constructors': d({}),
+                            'functions': d({}),
+                        },
+                    },
+                    'imports': d({}),
+                },
+                'api': {
+                    'root': {
+                        'algorithms': d({}),
+                    },
+                    'imports': d({}),
+                },
             },
             'imports': d({}),
-        }
+        },
     }],
 }
