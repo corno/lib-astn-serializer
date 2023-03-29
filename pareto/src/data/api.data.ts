@@ -1,36 +1,36 @@
 import * as pd from 'pareto-core-data'
 
-import {algorithm, dependent, sconstructor, sfunction, sFunctionReference, typeReference } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
+import { algorithm, constructor, data, dependent, sfunction } from "lib-pareto-typescript-project/dist/submodules/project/shorthands"
 
 import * as g_project from "lib-pareto-typescript-project/dist/submodules/project"
 const d = pd.d
 
 export const $: g_project.T.ModuleDefinition.api.root<pd.SourceLocation> = {
     'algorithms': d({
-        "createApostrophedStringSerializer": algorithm(sfunction("this", {}, "SerializeString"), dependent(null, {
-            "escapeString": sFunctionReference("escape", {}, "EscapeString"),
+        "createApostrophedStringSerializer": algorithm(sfunction("this", {}, "SerializeString"), {}, dependent(null, {
+            "escapeString": sfunction("escape", {}, "EscapeString"),
         }, {})),
-        "createMultilineStringSerializer": algorithm(sfunction("this", {}, "SerializeMultilineString"), dependent(null, {
-            "escapeMultilineString": sFunctionReference("escape", {}, "EscapeMultilineString"),
+        "createMultilineStringSerializer": algorithm(sfunction("this", {}, "SerializeMultilineString"), {}, dependent(null, {
+            "escapeMultilineString": sfunction("escape", {}, "EscapeMultilineString"),
         }, {})),
-        "createNonWrappedStringSerializer": algorithm(sfunction("this", {}, "SerializeString"), dependent(null, {
-            "escapeString": sFunctionReference("escape", {}, "EscapeString"),
+        "createNonWrappedStringSerializer": algorithm(sfunction("this", {}, "SerializeString"), {}, dependent(null, {
+            "escapeString": sfunction("escape", {}, "EscapeString"),
         }, {})),
-        "createQuotedStringSerializer": algorithm(sfunction("this", {}, "SerializeString"), dependent(null, {
-            "escapeString": sFunctionReference("escape", {}, "EscapeString"),
+        "createQuotedStringSerializer": algorithm(sfunction("this", {}, "SerializeString"), {}, dependent(null, {
+            "escapeString": sfunction("escape", {}, "EscapeString"),
         }, {})),
-        "createAnnotater": algorithm(sconstructor("this", {}, "CreateAnnotater")),
-        "createASTNNormalizer": algorithm(sfunction("this", {}, "NormalizeASTN"), dependent(typeReference("this", {}, "SerializerConfigurationData"), {
-            "serializeApostrophedString": sFunctionReference("this", {}, "SerializeString"),
-            "serializeMultilineString": sFunctionReference("this", {}, "SerializeMultilineString"),
-            "serializeNonWrappedString": sFunctionReference("this", {}, "SerializeString"),
-            "serializeQuotedString": sFunctionReference("this", {}, "SerializeString"),
+        "createAnnotater": algorithm(constructor("this", {}, "CreateAnnotater")),
+        "createASTNNormalizer": algorithm(sfunction("this", {}, "NormalizeASTN"), {}, dependent(data("this", {}, "SerializerConfigurationData"), {
+            "serializeApostrophedString": sfunction("this", {}, "SerializeString"),
+            "serializeMultilineString": sfunction("this", {}, "SerializeMultilineString"),
+            "serializeNonWrappedString": sfunction("this", {}, "SerializeString"),
+            "serializeQuotedString": sfunction("this", {}, "SerializeString"),
         }, {})),
-        "createJSONFormatter": algorithm(sfunction("this", {}, "FormatJSON"), dependent(typeReference("this", {}, "SerializerConfigurationData"), {
-            "escapeString": sFunctionReference("escape", {}, "EscapeString"),
-            "serializeNonWrappedString": sFunctionReference("this", {}, "SerializeString"),
-            "serializeQuotedString": sFunctionReference("this", {}, "SerializeString"),
-            "join": sFunctionReference("tostring", {}, "JoinStringArray"),
+        "createJSONFormatter": algorithm(sfunction("this", {}, "FormatJSON"), {}, dependent(data("this", {}, "SerializerConfigurationData"), {
+            "escapeString": sfunction("escape", {}, "EscapeString"),
+            "serializeNonWrappedString": sfunction("this", {}, "SerializeString"),
+            "serializeQuotedString": sfunction("this", {}, "SerializeString"),
+            "join": sfunction("tostring", {}, "JoinStringArray"),
         }, {})),
         // export type FCreateAnnotater = <PAnnotation> (
         //     $i: IAnnotatedHandler<PAnnotation>,

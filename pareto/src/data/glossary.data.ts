@@ -1,7 +1,7 @@
 import * as pd from 'pareto-core-data'
 
 import {
-    array, choice, glossaryParameter, group, imp, member, number, ref, stream, string, type, typeReference
+    array, glossaryParameter, group, imp, member, number, ref, string, type, typeReference
 } from "lib-pareto-typescript-project/dist/submodules/glossary/shorthands"
 
 import * as g_glossary from "lib-pareto-typescript-project/dist/submodules/glossary"
@@ -18,7 +18,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     'root': {
         'namespaces': d({}),
         'types': d({
-            "Annotation": type(glossaryParameter("Annotation")),
+            "Annotation": type(ref(glossaryParameter("Annotation"))),
             "SerializeMultilineStringData": type(group({
                 "lines": member(array(string())),
                 "indentation": member(string()),
@@ -36,7 +36,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             })),
             "TokenData": type(group({
                 "instruction": member(ref(typeReference("TokenFormatInstruction"))),
-                "annotation": member(glossaryParameter("Annotation")),
+                "annotation": member(ref(glossaryParameter("Annotation"))),
             })),
             "TokenFormatInstruction": type(group({
                 "stringBefore": member(string()),
@@ -50,8 +50,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
     },
     'asynchronous': {
         'interfaces': d({}),
-        'constructors': d({}),
-        'functions': d({}),
+        'algorithms': d({}),
     },
     'synchronous': {
         'interfaces': d({
@@ -141,8 +140,7 @@ export const $: g_glossary.T.Glossary<pd.SourceLocation> = {
             // ),
 
         }),
-        'constructors': d({}),
-        'functions': d({
+        'algorithms': d({
 
             // export type FCreateAnnotater = <PAnnotation> (
             //     $i: IAnnotatedHandler<PAnnotation>,
