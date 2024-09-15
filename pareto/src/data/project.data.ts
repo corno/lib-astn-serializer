@@ -18,7 +18,7 @@ export const $: mproject.T.Project<pd.SourceLocation> = {
         "glo-astn-handlers": null,
         "lib-astn-dummyhandlers": null,
         "res-astn-escape-string": null,
-        "tostring": null,
+        //"tostring": null,
     }),
     'type': ['library', {
         'main': {
